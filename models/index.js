@@ -23,15 +23,15 @@ var User = Database.sequelize.define('User', {
   password: Database.DataTypes.STRING,
 });
 
-Message.hasMany(Reply);
-Topic.hasMany(Message);
-User.hasMany(Message);
-User.hasMany(Reply);
-
 Message.belongsTo(User);
 Message.belongsTo(Topic);
 Reply.belongsTo(Message);
 Reply.belongsTo(User);
+
+Message.hasMany(Reply);
+Topic.hasMany(Message);
+User.hasMany(Message);
+User.hasMany(Reply);
 
 module.exports = {
   Message: Message,

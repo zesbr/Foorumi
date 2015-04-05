@@ -3,24 +3,24 @@ var FoorumApp = angular.module('FoorumApp', ['ngRoute']);
 FoorumApp.config(function($routeProvider){
   $routeProvider
     .when('/', {
+      controller: 'TopicsListController',
       templateUrl: 'app/views/topics/index.html'
-      // Lisää oikea kontrolleri tähän
     })
     .when('/topics/:id', {
+      controller: 'ShowTopicController',
       templateUrl: 'app/views/topics/show.html'
-      // Lisää oikea kontrolleri tähän
     })
     .when('/messages/:id', {
+      controller: 'ShowMessageController',
       templateUrl: 'app/views/messages/show.html'
-      // Lisää oikea kontrolleri tähän
     })
     .when('/login', {
+      controller: 'UserController',
       templateUrl: 'app/views/users/login.html'
-      // Lisää oikea kontrolleri tähän
     })
     .when('/register', {
+      controller: 'UserController',
       templateUrl: 'app/views/users/register.html'
-      // Lisää oikea kontrolleri tähän
     })
     .otherwise({
       redirectTo: '/'

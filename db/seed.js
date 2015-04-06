@@ -1,31 +1,26 @@
-var Sequelize = require('sequelize');
+var Database = require('./connection');
 
-var sequelize = new Sequelize('foorumi', '', '', {
-  dialect: 'sqlite',
-  storage: 'db/database.sqlite'
+var User = Database.sequelize.define('User', {
+  id: { type: Database.DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  username: Database.DataTypes.STRING,
+  password: Database.DataTypes.STRING
 });
 
-var User = sequelize.define('User', {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  username: Sequelize.STRING,
-  password: Sequelize.STRING
+var Topic = Database.sequelize.define('Topic', {
+  id: { type: Database.DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  name: Database.DataTypes.STRING,
+  description: Database.DataTypes.TEXT
 });
 
-var Topic = sequelize.define('Topic', {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  name: Sequelize.STRING,
-  description: Sequelize.TEXT
+var Message = Database.sequelize.define('Message', {
+  id: { type: Database.DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  title: Database.DataTypes.STRING,
+  content: Database.DataTypes.TEXT
 });
 
-var Message = sequelize.define('Message', {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  title: Sequelize.STRING,
-  content: Sequelize.TEXT
-});
-
-var Reply = sequelize.define('Reply', {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  content: Sequelize.TEXT
+var Reply = Database.sequelize.define('Reply', {
+  id: { type: Database.DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  content: Database.DataTypes.TEXT
 });
 
 Message.belongsTo(User);
@@ -38,4 +33,4 @@ Topic.hasMany(Message);
 User.hasMany(Message);
 User.hasMany(Reply);
 
-sequelize.sync();
+Database.sequelize.sync();

@@ -33,7 +33,8 @@ router.get('/logged-in', function(req, res, next){
   res.send(200);
 });
 
-router.post('/logout', function(req, res, next){
+// GET /users/logout
+router.get('/logout', function(req, res, next){
   req.session.userId = null;
 
   res.send(200);

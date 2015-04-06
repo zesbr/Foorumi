@@ -8,7 +8,6 @@ FoorumApp.service('Api', function($http){
   }
   this.addTopic = function(topic){
     // Lisää annettu aihealue lähettämällä POST-pyyntö toteuttamasi Api:n polkuun /topics
-    return $http.post('/topics', topic);
   }
 
   // Viestien Api-funktiot
@@ -33,5 +32,8 @@ FoorumApp.service('Api', function($http){
   }
   this.getUserLoggedIn = function(){
     // Hae kirjautunut käyttäjä toteuttamasi Api:n polusta /users/logged-in
+  }
+  this.logout = function(){
+    return $http.get('/users/logout');
   }
 });

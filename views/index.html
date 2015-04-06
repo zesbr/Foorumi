@@ -47,8 +47,9 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/login">Kirjaudu sisään</a></li>
-            <li><a href="#/register">Rekisteröidy</a></li>
+            <li ng-if="userLoggedIn"><a ng-click="logOut()" style="cursor: pointer">Kirjaudu ulos</a></li>
+            <li ng-if="!userLoggedIn"><a href="#/login">Kirjaudu sisään</a></li>
+            <li ng-if="!userLoggedIn"><a href="#/register">Rekisteröidy</a></li>
           </ul>
         </div>
       </div>

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var authentication = require('utils/authentication');
+var authentication = require('../utils/authentication');
 var Models = require('../models');
 
 // Huom! Kaikki polut alkavat polulla /messages

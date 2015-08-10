@@ -1,5 +1,11 @@
 var authentication = function(req, res, next){
-  // Tarkista, että käyttäjä on kirjautunut tässä
+  if (!req.session.userId || req.session.userId == null) {
+    res.status(403).json({ 
+    	error: 'Sinun tulee olla kirjautunut sisään voidaksesi suorittaa tämän toimenpiteen.' 
+    });
+  } else {
+    next();
+  }
 }
 
 module.exports = authentication;
